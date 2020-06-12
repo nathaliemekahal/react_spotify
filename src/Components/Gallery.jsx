@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 // import Topnav from './Topnav'
-import {Row,Col,Image} from 'react-bootstrap'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Tracks from './Tracks'
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {Row,Col,Image} from 'react-bootstrap'
+import { Link } from "react-router-dom"
 
 
  class Gallery extends Component {
@@ -70,8 +72,8 @@ import { useHistory } from "react-router-dom";
             
              {this.state.eminem.map((song)=>
              <Col xs={3} md={4}>
-              <Image className='mb-2'src={song.album.cover_medium} onClick={()=>this.showTracks(song.album.id)}>
-            </Image>
+              <Link to="/tracks:id"><Image className='mb-2'src={song.album.cover_medium} onClick={()=>this.showTracks(song.album.id)}>
+            </Image></Link>
              </Col>
              )}
                 
