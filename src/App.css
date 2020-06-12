@@ -37,9 +37,14 @@
   }
 }
 
-body.homepage {
-  background: rgb(38, 100, 103);
-  background: linear-gradient(143deg, rgb(15, 68, 95) 0%, rgb(14, 41, 66) 40%, rgba(0, 0, 0, 5) 94%) no-repeat;
+
+
+
+
+body {
+  background: rgb(38, 100, 103) ;
+  background: linear-gradient(143deg, rgb(15, 68, 95) 0%, rgb(14, 41, 66) 40%, rgba(0, 0, 0, 5) 94%) no-repeat 
+  ;
   color     : white;
   background-attachment: fixed ;
   background-repeat: no-repeat;
@@ -47,6 +52,9 @@ body.homepage {
   background-position: center;
 
 
+}
+a{
+  text-decoration: none;
 }
 
 .side-nav-class ul{
@@ -64,6 +72,9 @@ body.homepage {
 .upperbar-wrapper{
   margin-left: 175.367px;
   font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
  
 }
 .upperbar-wrapper .row{
@@ -80,12 +91,24 @@ body.homepage {
   padding-left    : 0;  
 } */
 
+
+
+
 .side-nav-bar {
   position: static;
+}
+.nav{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+.nav-item{
+  text-decoration: none;
 }
 .nav-link{
   padding-bottom: 0.2rem;
   padding-top: 0.7rem;
+  padding-right: 2rem;
 }
 .tbt {
   font-weight  : 700;
@@ -732,4 +755,8 @@ body.homepage {
       .imageMargin{
         width: 300px;
         padding: 10px;
+      }
+      .artistname{
+        padding-right: 64%;
+        color:#9A9A9A
       }
