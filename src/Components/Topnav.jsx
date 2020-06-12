@@ -18,7 +18,7 @@ class Topnav extends Component {
       this.setState({
         searchinput: searchinput
         }, () => {
-          console.log(this.state.searchinput) // now you are sure that the state has been updated
+          console.log('state',this.state.searchinput) // now you are sure that the state has been updated
         })
        
     }
