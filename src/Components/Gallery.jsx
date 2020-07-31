@@ -14,7 +14,7 @@ const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   DataLoaded: () => dispatch({ type: "IS_LOADING" }),
   fetchSongs: (url) => dispatch(fetchSongsList(url)),
-  getSongId: (id) => dispatch(getSelectedSong(id)),
+  // getSongId: (id) => dispatch(getSelectedSong(id)),
 });
 
 const fetchSongsList = (url) => {
@@ -36,16 +36,16 @@ const fetchSongsList = (url) => {
   };
 };
 
-const getSelectedSong = (id) => {
-  return async (dispatch, getState) => {
-    if (id) {
-      dispatch({
-        type: "SONG_ID",
-        payload: id,
-      });
-    }
-  };
-};
+// const getSelectedSong = (id) => {
+//   return async (dispatch, getState) => {
+//     if (id) {
+//       dispatch({
+//         type: "SONG_ID",
+//         payload: id,
+//       });
+//     }
+//   };
+// };
 
 class Gallery extends Component {
   constructor(props) {
@@ -65,10 +65,10 @@ class Gallery extends Component {
     this.props.fetchSongs(url);
     setTimeout(this.props.DataLoaded, 2000);
   }
-  changeRoute = () => {
-    console.log("TRY IDIDID", this.props.selectedSong.songId);
-    this.props.history.push("/tracks/" + this.props.selectedSong.songId);
-  };
+  // changeRoute = () => {
+  //   console.log("TRY IDIDID", this.props.selectedSong.songId);
+  //   this.props.history.push("/tracks/" + this.props.selectedSong.songId);
+  // };
   render() {
     return (
       <>
