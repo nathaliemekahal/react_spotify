@@ -18,6 +18,7 @@ const initialState = {
   },
   selectedSong: {
     songId: "",
+    favorites: [],
   },
   info: {
     infolist: [],
