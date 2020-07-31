@@ -3,7 +3,7 @@ export default function (state = {}, action) {
     case "SONG_ID":
       return {
         ...state,
-        songId: state.songId.concat(action.payload),
+        songId: action.payload,
       };
 
     default:

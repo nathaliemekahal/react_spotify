@@ -3,7 +3,7 @@ export default function (state = {}, action) {
     case "GET_INFO_LIST":
       return {
         ...state,
-        infolist: state.infolist.concat(action.payload),
+        infolist: action.payload,
       };
 
     default:

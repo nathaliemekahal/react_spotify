@@ -6,8 +6,20 @@ const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   DataLoaded: () => dispatch({ type: "IS_LOADING" }),
   fetchInfo: (url) => dispatch(fetchInfoList(url)),
-  // getSongId: (id) => dispatch(getSelectedSong(id)),
+  getSongId: (id) => dispatch(getSelectedSong(id)),
 });
+
+const getSelectedSong = (id) => {
+  return async (dispatch, getState) => {
+    if (id) {
+      dispatch({
+        type: "SONG_ID",
+        payload: id,
+      });
+    }
+  };
+};
+
 const fetchInfoList = (url) => {
   return async (dispatch, getState) => {
     const response = await fetch(url, {
@@ -68,7 +80,12 @@ class Tracks extends Component {
           <ul className="ultracks-class">
             {this.props.info.infolist.map((track) => (
               <>
-                <li className="track-class mt-1">
+                <li
+                  className="track-class mt-1"
+                  onClick={() => {
+                    this.props.getSongId(track.title);
+                  }}
+                >
                   <div>
                     <p>{track.title}</p>
                   </div>
