@@ -34,9 +34,10 @@ class Login extends Component {
       console.log(this.props.user);
     }
     return (
+      <Container style={{marginLeft:"25%", marginTop:"7%"}}>
       <div id="loginWrapper">
-        <div>Spotify</div>
-        <div className="d-flex flex-column">
+        <div style={{fontSize:"50px", color:"white"}}>Spotify</div>
+        <div className="d-flex flex-column" style={{marginLeft:"20%"}}>
           <div>
             <button
               className="btn btn-fb text-uppercase"
@@ -105,6 +106,7 @@ class Login extends Component {
           </div>
         </div>
       </div>
+      </Container>
     );
   }
 }
