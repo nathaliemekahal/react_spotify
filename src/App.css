@@ -724,3 +724,10 @@ a {
   display: flex;
   justify-content: space-between;
 }
+.favorites-list {
+  color: white;
+  width: 150px;
+  margin-left: 200px;
+  display: flex;
+  align-items: center;
+}
