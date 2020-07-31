@@ -15,14 +15,14 @@ const initialState = {
     loading: true,
   },
   selectedSong: {
-    songId: null,
+    songId: "",
   },
 };
 
 const bigReducer = combineReducers({
   songs: songsReducer,
   fetching: fetchingReducer,
-  selectSong: selectsongReducer,
+  selectedSong: selectsongReducer,
 });
 
 export default function configureStore() {

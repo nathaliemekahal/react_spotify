@@ -17,6 +17,7 @@ function App() {
         <Topnav />
         <SideNavBar />
         <Route path="/" exact component={Gallery} />
+        <Route path="/tracks/:id" exact component={Tracks} />
 
         <Route path="/searchResults/:query" exact component={SearchResults} />
         <FunctionBar />

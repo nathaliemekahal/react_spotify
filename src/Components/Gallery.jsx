@@ -7,13 +7,14 @@ import Tracks from "./Tracks";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Row, Col, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   DataLoaded: () => dispatch({ type: "IS_LOADING" }),
   fetchSongs: (url) => dispatch(fetchSongsList(url)),
+  getSongId: (id) => dispatch(getSelectedSong(id)),
 });
 
 const fetchSongsList = (url) => {
@@ -31,7 +32,17 @@ const fetchSongsList = (url) => {
         type: "GET_SONGS_LIST",
         payload: songs.data,
       });
-      console.log(getState());
+    }
+  };
+};
+
+const getSelectedSong = (id) => {
+  return async (dispatch, getState) => {
+    if (id) {
+      dispatch({
+        type: "SONG_ID",
+        payload: id,
+      });
     }
   };
 };
@@ -54,6 +65,10 @@ class Gallery extends Component {
     this.props.fetchSongs(url);
     setTimeout(this.props.DataLoaded, 2000);
   }
+  changeRoute = () => {
+    console.log("TRY IDIDID", this.props.selectedSong.songId);
+    this.props.history.push("/tracks/" + this.props.selectedSong.songId);
+  };
   render() {
     return (
       <>
@@ -78,15 +93,20 @@ class Gallery extends Component {
               style={{ paddingLeft: "9rem" }}
             >
               {this.props.songs.list.map((song) => (
-                <Col xs={3} md={4}>
-                  <Link to="/tracks:id">
-                    <Image
-                      className="mb-2"
-                      src={song.album.cover_medium}
-                      onClick={() => this.showTracks(song.album.id)}
-                    ></Image>
+                <>
+                  <Link to={"/tracks/" + song.album.id}>
+                    <Col xs={3} md={4}>
+                      <Image
+                        className="mb-2"
+                        src={song.album.cover_medium}
+                        // onClick={() => {
+                        //   this.props.getSongId(song.album.id);
+                        //   // this.changeRoute();
+                        // }}
+                      ></Image>
+                    </Col>
                   </Link>
-                </Col>
+                </>
               ))}
             </Row>
           </>
@@ -96,4 +116,6 @@ class Gallery extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Gallery)
+);
