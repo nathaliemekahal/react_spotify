@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Spinner } from "react-bootstrap";
-// import Topnav from './Topnav'
-
+import SideNavBar from "./SideNavBar";
+import Topnav from "./Topnav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Tracks from "./Tracks";
 import { Redirect } from "react-router-dom";
@@ -72,6 +72,8 @@ class Gallery extends Component {
   render() {
     return (
       <>
+         <Topnav />
+        <SideNavBar />
         {this.props.fetching.loading && (
           <Row
             className="justify-content-center align-items-center"
