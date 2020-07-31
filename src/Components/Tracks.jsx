@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Row, Col } from "react-bootstrap";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
@@ -17,14 +18,14 @@ const fetchInfoList = (url) => {
       },
     });
     let songs = await response.json();
-    console.log("TRACKS", songs);
 
-    // if (songs) {
-    //   dispatch({
-    //     type: "GET_INFO_LIST",
-    //     payload: songs.tracks.data,
-    //   });
-    // }
+    if (songs) {
+      dispatch({
+        type: "GET_INFO_LIST",
+        payload: songs.tracks.data,
+      });
+    }
+    console.log("GETSTATE", getState());
   };
 };
 class Tracks extends Component {
@@ -32,32 +33,51 @@ class Tracks extends Component {
     super(props);
 
     this.state = {
-      albumImage: "",
+      localData: "",
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     let url =
       "https://deezerdevs-deezer.p.rapidapi.com/album/" +
       this.props.match.params.id;
 
     this.props.fetchInfo(url);
+    let response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        "x-rapidapi-key": "dc428aeb3dmshb072b11435b2a9fp126ba5jsnfb0d8dd5e710",
+      },
+    });
+    let localData = await response.json();
+
+    this.setState({ localData: localData.cover_medium });
     setTimeout(this.props.DataLoaded, 2000);
-    // let albumImage = this.props.songs.list.album.cover_small;
-    // this.setState({ albumImage });
   };
   render() {
     return (
-      <ul className="ultracks-class">
-        {this.props.info.infolist.map((track) => (
-          <>
-            {/* <img src={this.state.albumImage} /> */}
-            <li className="track-class mt-1">
-              <p>{track.title}</p>
-            </li>
-          </>
-        ))}
-      </ul>
+      <Row>
+        <Col className="cols-4 ">
+          <img
+            style={{ position: "fixed", bottom: "349px" }}
+            src={this.state.localData}
+          />
+        </Col>
+        <Col>
+          <ul className="ultracks-class">
+            {this.props.info.infolist.map((track) => (
+              <>
+                <li className="track-class mt-1">
+                  <div>
+                    <p>{track.title}</p>
+                  </div>
+                </li>
+              </>
+            ))}
+          </ul>
+        </Col>
+      </Row>
     );
   }
 }
