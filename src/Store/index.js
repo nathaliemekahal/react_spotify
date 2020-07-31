@@ -3,7 +3,7 @@ import fetchingReducer from "../Reducers/fetching";
 import songsReducer from "../Reducers/songs";
 import selectsongReducer from "../Reducers/selectsong";
 import infoReducer from "../Reducers/info";
-import login from "../Reducers/login"
+import login from "../Reducers/login";
 
 import thunk from "redux-thunk";
 
@@ -22,10 +22,9 @@ const initialState = {
   info: {
     infolist: [],
   },
-  user: {
-    username:""
-  
-  }
+  login: {
+    user: {},
+  },
 };
 
 const bigReducer = combineReducers({
@@ -33,7 +32,7 @@ const bigReducer = combineReducers({
   fetching: fetchingReducer,
   selectedSong: selectsongReducer,
   info: infoReducer,
-  user:login
+  user: login,
 });
 
 export default function configureStore() {
