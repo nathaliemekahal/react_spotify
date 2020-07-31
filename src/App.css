@@ -707,8 +707,10 @@ a {
 }
 
 .track-class {
+  width: 80%;
   color: white;
   list-style: none;
+  cursor: pointer;
 }
 .ultracks-class {
   display: flex;
@@ -716,4 +718,9 @@ a {
   align-items: flex-start;
   margin-left: 12%;
   margin-top: 3rem;
+}
+.track-icon-class {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
