@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Navbar,Nav,Form,FormControl,Button,Row,ListGroup} from 'react-bootstrap'
 import Gallery from './Gallery'
+import {withRouter} from 'react-router-dom'
+
 
 class Topnav extends Component {
     constructor(props){
@@ -18,7 +20,7 @@ class Topnav extends Component {
       this.setState({
         searchinput: searchinput
         }, () => {
-          console.log('state',this.state.searchinput) // now you are sure that the state has been updated
+           this.props.history.push('/searchResults/'+searchinput)
         })
        
     }
@@ -78,4 +80,4 @@ class Topnav extends Component {
     }
 }
 
-export default Topnav
+export default withRouter(Topnav)
