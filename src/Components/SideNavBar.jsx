@@ -1,50 +1,59 @@
-import React from 'react'
-import {Nav,ListGroup,InputGroup,Image,Button} from 'react-bootstrap'
+import React from "react";
+import { Nav, ListGroup, InputGroup, Image, Button } from "react-bootstrap";
+import {withRouter} from 'react-router-dom'
 
-function SideNavBar() {
-    return (
-        <div className="leftCol">
-            <Nav id="side-nav" className="side-nav-class side-nav-bar" role="navigation">
-            <div>
-                <div className="logo-class pl-2">
-                <Image src="assets/logo.png" alt="spotify logo" width="100px"/>
+const SideNavBar = (props) => {
+  return (
+    window.location.pathname === '/loginPage' || window.location.pathname === '/register'  ? <div className="mt-5"/> :
+    <div className="leftCol">
+      <Nav
+        id="side-nav"
+        className="side-nav-class side-nav-bar"
+        role="navigation"
+      >
+        <div>
+          <div className="logo-class pl-2">
+            <Image src="assets/logo.png" alt="spotify logo" width="100px" />
+          </div>
+          <ul>
+            <li>
+              <div className="sidenav-icons">
+                <i className="fa fa-home"></i>
+              </div>
+              <div>
+                <a className="ml-2" onclick="sideClick(event)" href="#">
+                  Home
+                </a>
+              </div>
+            </li>
+            <li id="search" onclick="createsearchDiv()">
+              <div className="sidenav-icons">
+                <i className="fa fa-search"></i>
+              </div>
+              <div>
+                <a className="ml-2" onclick="sideClick(event)" href="#">
+                  Search
+                </a>
+              </div>
+            </li>
+            <ListGroup.Item id="userinput" className="d-none">
+              <InputGroup.Text id="userinputsearch" />
+            </ListGroup.Item>
+            <li>
+              <div className=" d-none"></div>
 
-                </div>
-                <ul >
-                    <li>                       
-                     
-                        <div className="sidenav-icons">
-                            <i className="fa fa-home"></i>
-                        </div>
-                        <div>
-                            <a className="ml-2"onclick="sideClick(event)" href="#">Home</a>
-                        </div>
-                    </li>
-                    <li id='search' onclick="createsearchDiv()">
-                       
-                        <div className="sidenav-icons">
-                            <i className="fa fa-search"></i>
-                        </div>
-                        <div>
-                            <a className="ml-2" onclick="sideClick(event)" href="#">Search</a>
-                        </div>
-                    </li>
-                    <ListGroup.Item id='userinput' className="d-none">
-                        <InputGroup.Text id="userinputsearch" />
-                    </ListGroup.Item>
-                    <li>
-                        <div className=" d-none"></div>
-
-                        <div className="sidenav-icons">
-                        <i class="fa fa-book"></i>
-                        </div>
-                        <div>
-                            <a className="ml-2"  href="#">Library</a>
-                        </div>
-                    </li>
-                </ul>
-                </div>
-            {/* <div className="pb-5">
+              <div className="sidenav-icons">
+                <i class="fa fa-book"></i>
+              </div>
+              <div>
+                <a className="ml-2" href="#">
+                  Library
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        {/* <div className="pb-5">
                 <ul className="bottom-ul" style={{marginBottom:'5rem'}}>
                     
                         <button type="button" className="btn btn-light py-1 styleBtnLight" style={{width: '100%' }}>SIGN UP</button>
@@ -62,10 +71,9 @@ function SideNavBar() {
                 </div>
                 </ul>
             </div> */}
-        </Nav>
-        </div>
-        
-    )
-}
+      </Nav>
+    </div>
+  );
+};
 
-export default SideNavBar
+export default withRouter(SideNavBar);

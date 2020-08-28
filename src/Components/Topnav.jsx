@@ -35,7 +35,10 @@ class Topnav extends Component {
   };
 
   render() {
-    return (
+    return this.props.location.pathname === "/loginPage" ||
+      this.props.location.pathname === "/register" ? (
+      ""
+    ) : (
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           class="upperbar-wrapper pb-4 pr-2"
