@@ -8,19 +8,21 @@ import Topnav from "./Components/Topnav";
 import Gallery from "./Components/Gallery";
 import Tracks from "./Components/Tracks";
 import SearchResults from "./Components/SearchResults";
+import LoginPage from "./Components/LoginPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Topnav />
-        <SideNavBar />
-        <Route path="/" exact component={Gallery} />
+        {/* <Topnav />
+        <SideNavBar /> */}
+        <LoginPage />
+        {/* <Route path="/" exact component={Gallery} />
         <Route path="/tracks/:id" exact component={Tracks} />
 
         <Route path="/searchResults/:query" exact component={SearchResults} />
-        <FunctionBar />
+        <FunctionBar /> */}
         {/* <Route path='/tracks:id' exact component={Tracks}/> */}
       </Router>
     </div>

@@ -1,0 +1,7 @@
+.LoginPage__container {
+  display: flex;
+  flex-direction: column;
+}
+/* .LoginPage__container > input {
+  height: 130px;
+} */
