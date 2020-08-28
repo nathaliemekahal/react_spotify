@@ -27,7 +27,10 @@ class LoginPage extends Component {
       data: this.state.user,
     };
     let data = await axios(headers);
-    console.log(data.data);
+    localStorage.setItem("token", data.data.token);
+    if (data.data.token) {
+      this.props.history.push("/home");
+    }
   };
   render() {
     return (

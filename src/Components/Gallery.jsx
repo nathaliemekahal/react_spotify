@@ -19,12 +19,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 const fetchSongsList = (url) => {
   return async (dispatch, getState) => {
+    const Trial = localStorage.getItem("token");
     const response = await fetch(url, {
       method: "GET",
-      headers: {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "dc428aeb3dmshb072b11435b2a9fp126ba5jsnfb0d8dd5e710",
-      },
+      headers: { Authorization: "Bearer " + localStorage.getItem("token") },
     });
     let songs = await response.json();
     if (songs) {
@@ -60,7 +58,7 @@ class Gallery extends Component {
   }
 
   componentDidMount() {
-    let url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
+    let url = "http://localhost:3232/deezer/tracks/eminem";
 
     this.props.fetchSongs(url);
     setTimeout(this.props.DataLoaded, 2000);

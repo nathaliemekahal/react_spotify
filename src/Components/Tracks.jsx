@@ -27,13 +27,13 @@ const fetchInfoList = (url) => {
   return async (dispatch, getState) => {
     const response = await fetch(url, {
       method: "GET",
+
       headers: {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "dc428aeb3dmshb072b11435b2a9fp126ba5jsnfb0d8dd5e710",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
     let songs = await response.json();
-
+    console.log(songs);
     if (songs) {
       dispatch({
         type: "GET_INFO_LIST",
@@ -54,15 +54,13 @@ class Tracks extends Component {
 
   componentDidMount = async () => {
     let url =
-      "https://deezerdevs-deezer.p.rapidapi.com/album/" +
-      this.props.match.params.id;
+      "http://localhost:3232/deezer/album/" + this.props.match.params.id;
 
     this.props.fetchInfo(url);
     let response = await fetch(url, {
       method: "GET",
       headers: {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "dc428aeb3dmshb072b11435b2a9fp126ba5jsnfb0d8dd5e710",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
     let localData = await response.json();

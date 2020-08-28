@@ -15,15 +15,15 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Topnav />
-        <SideNavBar /> */}
-        <LoginPage />
-        {/* <Route path="/" exact component={Gallery} />
-        <Route path="/tracks/:id" exact component={Tracks} />
+        <Topnav />
+        <SideNavBar />
 
+        <Route path="/home" exact component={Gallery} />
+        <Route path="/tracks/:id" exact component={Tracks} />
+        <Route path="/loginPage" exact component={LoginPage} />
         <Route path="/searchResults/:query" exact component={SearchResults} />
-        <FunctionBar /> */}
-        {/* <Route path='/tracks:id' exact component={Tracks}/> */}
+        <FunctionBar />
+        <Route path="/tracks:id" exact component={Tracks} />
       </Router>
     </div>
   );
