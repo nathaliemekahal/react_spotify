@@ -13,7 +13,7 @@ class LoginPage extends Component {
   }
 
   catchInput = (e) => {
-    switch (e.target.value) {
+    switch (e.target.id) {
       case "name":
         this.setState({ user: { ...this.state.user, name: e.target.value } });
         break;
@@ -25,7 +25,7 @@ class LoginPage extends Component {
       case "email":
         this.setState({ user: { ...this.state.user, email: e.target.value } });
         break;
-      case "pasword":
+      case "password":
         this.setState({
           user: { ...this.state.user, password: e.target.value },
         });
@@ -35,6 +35,7 @@ class LoginPage extends Component {
         break;
     }
   };
+
   saveInputs = async () => {
     console.log("Save Inputs");
     const headers = {
@@ -43,6 +44,7 @@ class LoginPage extends Component {
       data: this.state.user,
     };
     let data = await axios(headers);
+    console.log(data);
     localStorage.setItem("token", data.data.token);
     if (data.data.token) {
       this.props.history.push("/home");

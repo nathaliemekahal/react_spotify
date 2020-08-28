@@ -57,9 +57,15 @@ class LoginPage extends Component {
             className="mt-3"
           />
           <br />
-          <Button onClick={() => this.saveInputs()} className="mt-3">
-            Login
-          </Button>
+            <Button onClick={() => this.saveInputs()} className="mt-3">
+              Login
+            </Button>
+            <Button
+              onClick={() => this.props.history.push("/register")}
+              className="mt-3 ml-2"
+            >
+              Register
+            </Button>
         </div>
       </div>
     );
